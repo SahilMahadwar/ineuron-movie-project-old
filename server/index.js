@@ -2,9 +2,17 @@ const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const colors = require("colors");
+const connectDB = require("./config/db");
+const errorHandler = require("./middleware/error");
 
 //Load env vars
 dotenv.config({ path: "../.env" });
+
+// Connect to db
+connectDB();
+
+//Route Files
+const auth = require("./routes/auth");
 
 //Create App
 const app = express();
@@ -19,23 +27,25 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("short"));
 }
 
+// Mount routers
+app.use("/api/v1/auth", auth);
+
+// Api Home
 app.get("/", (req, res, next) => {
   return res.status(200).json({
     message: "Hello from root!",
   });
 });
 
-app.get("/hello", (req, res, next) => {
-  return res.status(200).json({
-    message: "Hello from path!",
-  });
-});
-
+// 404 Endpoint
 app.use((req, res, next) => {
   return res.status(404).json({
     error: "Not Found",
   });
 });
+
+// Error middleware
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
