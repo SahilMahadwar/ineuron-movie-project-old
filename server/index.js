@@ -2,9 +2,13 @@ const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const colors = require("colors");
+const connectDB = require("./config/db");
 
 //Load env vars
 dotenv.config({ path: "../.env" });
+
+// Connect to db
+connectDB();
 
 //Create App
 const app = express();
@@ -25,7 +29,7 @@ app.get("/", (req, res, next) => {
   });
 });
 
-app.get("/hello", (req, res, next) => {
+app.get("/hello", async (req, res, next) => {
   return res.status(200).json({
     message: "Hello from path!",
   });
