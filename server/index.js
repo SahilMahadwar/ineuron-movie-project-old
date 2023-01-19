@@ -1,5 +1,23 @@
 const express = require("express");
+const dotenv = require("dotenv");
+const morgan = require("morgan");
+const colors = require("colors");
+
+//Load env vars
+dotenv.config({ path: "../.env" });
+
+//Create App
 const app = express();
+
+// Body parser
+app.use(express.json());
+
+// Dev logging middleware
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+} else {
+  app.use(morgan("short"));
+}
 
 app.get("/", (req, res, next) => {
   return res.status(200).json({
@@ -19,8 +37,20 @@ app.use((req, res, next) => {
   });
 });
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+const server = app.listen(
+  PORT,
+  console.log(
+    `Ineuron Movie API  running in ${process.env.NODE_ENV} mode on port ${PORT}`
+      .yellow.bold
+  )
+);
+
+// Handle unhandled promise rejections
+process.on("unhandledRejection", (err, promise) => {
+  console.log(`Error: ${err.message}`.red);
+
+  // Close server and exit process
+  server.close(() => process.exit(1));
 });
