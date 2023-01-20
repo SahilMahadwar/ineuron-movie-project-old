@@ -3,10 +3,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const colors = require("colors");
 const connectDB = require("./config/db");
-<<<<<<< HEAD
 const errorHandler = require("./middleware/error");
-=======
->>>>>>> 243b68f1133ffaf56dd7ed6cf860cfc7b9728cb2
 
 //Load env vars
 dotenv.config({ path: "../.env" });
@@ -14,12 +11,9 @@ dotenv.config({ path: "../.env" });
 // Connect to db
 connectDB();
 
-<<<<<<< HEAD
 //Route Files
 const auth = require("./routes/auth");
 
-=======
->>>>>>> 243b68f1133ffaf56dd7ed6cf860cfc7b9728cb2
 //Create App
 const app = express();
 
@@ -43,16 +37,7 @@ app.get("/", (req, res, next) => {
   });
 });
 
-<<<<<<< HEAD
 // 404 Endpoint
-=======
-app.get("/hello", async (req, res, next) => {
-  return res.status(200).json({
-    message: "Hello from path!",
-  });
-});
-
->>>>>>> 243b68f1133ffaf56dd7ed6cf860cfc7b9728cb2
 app.use((req, res, next) => {
   return res.status(404).json({
     error: "Not Found",
