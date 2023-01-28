@@ -1,5 +1,6 @@
 const asyncHandler = require("../middleware/async");
 const Movie = require("../models/Movie");
+const Review = require("../models/Review");
 const ErrorResponse = require("../utils/errorResponse");
 
 // @desc    Create movie
@@ -43,6 +44,9 @@ exports.getSingleMovie = asyncHandler(async (req, res, next) => {
       new ErrorResponse(`Movie not found id of ${req.params.id}`, 404)
     );
   }
+
+  const reviews = await Review.find({ movie: req.params.id }).populate("user");
+  movie.reviews = reviews;
 
   res.status(200).json({ success: true, data: movie });
 });
