@@ -1,9 +1,7 @@
-import Button from "../components/Button";
-
 export function Home() {
   return (
     <div>
-      <Button>This is button</Button>
+      <p>This is button</p>
     </div>
   );
 }

@@ -8,7 +8,7 @@
     ]
   },
   "scripts": {
-    "start:client": "yarn workspace client dev",
+    "start:client": "yarn workspace client start",
     "start:server": "yarn workspace server start"
   },
   "packageManager": "yarn@3.2.1",
