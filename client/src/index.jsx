@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import AdminLayout from "./layouts/AdminLayout";
 import AdminDashboard from "./routes/admin/Dashboard";
-import ErrorPage from "./routes/ErrorPage";
+import ErrorPage from "./routes/errorPage";
 import Home from "./routes/home";
 import "./styles/globals.css";
 
