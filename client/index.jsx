@@ -2,11 +2,11 @@ import "@fontsource/inter/variable.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App";
-import AdminLayout from "./layouts/AdminLayout";
-import AdminDashboard from "./routes/admin/Dashboard";
-import ErrorPage from "./routes/ErrorPage";
-import Home from "./routes/Home";
+import App from "./src/App";
+import AdminLayout from "./src/layouts/AdminLayout";
+import AdminDashboard from "./src/routes/admin/Dashboard";
+import ErrorPage from "./src/routes/ErrorPage";
+import Home from "./src/routes/Home";
 import "./styles/globals.css";
 
 const router = createBrowserRouter([
