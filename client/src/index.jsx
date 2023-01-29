@@ -6,7 +6,7 @@ import App from "./App";
 import AdminLayout from "./layouts/AdminLayout";
 import AdminDashboard from "./routes/admin/Dashboard";
 import ErrorPage from "./routes/ErrorPage";
-import Home from "./routes/Home";
+import Home from "./routes/home";
 import "./styles/globals.css";
 
 const router = createBrowserRouter([
